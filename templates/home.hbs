@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TODO Dashboard</title>
+  <style>
+    /* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Peaceful Wildlife Background */
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(10, 40, 20, 0.8)),
+              url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") no-repeat center center/cover;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle fog effect */
+body::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  background: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+  opacity: 0.1;
+  animation: drift 80s linear infinite;
+  z-index: 0;
+}
+
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-200px); }
+}
+
+/* Welcome Card */
+h1 {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  margin: 0.5rem 0;
+  box-shadow: 0 0 15px rgba(0, 100, 50, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  position: relative;
+}
+
+/* Links as Nature Buttons */
+a {
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3a7d44, #2c5f2d);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 50, 20, 0.5);
+  z-index: 2;
+  position: relative;
+}
+
+a:hover {
+  background: linear-gradient(135deg, #2c5f2d, #3a7d44);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 70, 30, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+  a {
+    margin: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h1>Welcome, {{user.username}}!</h1>
+  <h1>{{user.email}}</h1>
+  <a href="/api/todos">View TODOS</a>
+  <a href="/create_todo">Create a TODO</a>
+</body>
+</html>
