@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create-todo</title>
+  <style>
+    /* General Page Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container */
+form {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="date"] {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background: #6c63ff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #574fd6;
+    transform: translateY(-2px);
+}
+
+/* Label for checkbox */
+label[for="isCompleted"] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+  </style>
+</head>
+<body>
+  <h2>Create a todo</h2>
+  <form action="/api/todos" method = "post">
+   <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Todo description">
+    <label for="isCompleted">
+  <input type="checkbox" name="isCompleted" id="isCompleted" value="yes">
+  Completed
+</label>
+    <input type="date" id="dueDate" name="dueDate">
+    <button type="submit">CREATE</button>
+  </form>
+</body>
+</html>
