@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo-Login</title>
+  <style>
+    /* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background - Astronomy Vibe */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;  /* Stack form and link */
+  background: radial-gradient(circle at 20% 20%, #1a2a6c, #16222a, #000000);
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+}
+
+/* Stars Layer */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: twinkle 60s linear infinite;
+  z-index: -1; /* keeps stars behind content */
+}
+
+@keyframes twinkle {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+/* Login Form */
+form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 320px;
+  z-index: 2;
+  text-align: center;
+  position: relative;
+}
+
+/* Input Fields */
+input {
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px #00d4ff, 0 0 20px #008cff;
+}
+
+/* Button */
+button {
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff);
+  box-shadow: 0 0 15px #00d4ff, 0 0 30px #008cff;
+  transform: scale(1.05);
+}
+
+/* Create Account Link */
+a {
+  margin-top: 1.2rem;
+  color: #8fd3f4;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+a:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 10px #00d4ff;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}
+.signup-text {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: #ccc;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+}
+
+.signup-text a {
+  color: #8fd3f4;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px;
+  transition: 0.3s ease;
+}
+
+.signup-text a:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 10px #00d4ff;
+}
+
+
+  </style>
+</head>
+<body>
+  <form action="/api/users/login" method="POST">
+    <input type="text" name="email" placeholder="email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+  </form>
+  <p class="signup-text">
+  Don’t have an account?
+  <a href="/signup">Register</a>
+</p>
+</body>
+</html>
