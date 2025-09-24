@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos</title>
+  <style>
+    /* General Page Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+
+/* Todo Card */
+p, form {
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+.todo-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.todo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+/* Todo Text */
+.todo-card p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* Forms inside Todos */
+.todo-card form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Inputs */
+.todo-card input[type="text"],
+.todo-card input[type="date"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    flex: 1 1 150px;
+}
+
+/* Checkbox */
+.todo-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+/* Buttons */
+.todo-card button {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.todo-card button:hover {
+    background: #574fd6;
+}
+
+/* Delete Button Special Color */
+.todo-card form:last-child button {
+    background: #ff6b6b;
+}
+
+.todo-card form:last-child button:hover {
+    background: #d63c3c;
+}
+
+  </style>
+</head>
+<body>
+<h2>Todos</h2>
+
+{{#each todos}}
+<div class="todo-card">
+  <p>Title: {{this.title}}</p>
+  <p>Description: {{this.description}}</p>
+  <p>Due Date: {{this.dueDate}}</p>
+
+  <form action="/api/todos/{{this._id}}?_method=PUT" method="POST">
+    <input type="text" name="title" value="{{this.title}}" required>
+    <input type="text" name="description" value="{{this.description}}">
+    <input type="date" name="dueDate" value="{{this.dueDate}}">
+    <input type="checkbox" name="isCompleted" {{#if this.isCompleted}}checked{{/if}}>
+    <button type="submit">Update</button>
+  </form>
+
+  <form action="/api/todos/{{this._id}}?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+  </form>
+  <br>
+  <button><a href="create_todo">CREATE</a></button>
+</div>
+<hr>
+{{/each}}
+</body>
+</html>
