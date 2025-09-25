@@ -7,7 +7,6 @@ It lets you add, edit, delete, and manage your daily tasks.
 
 ## Features
 - Add new todos  
-- Edit existing todos  
 - Delete todos  
 - Mark tasks as complete  
 
